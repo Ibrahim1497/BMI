@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/cubit/user_cubit/user_cubit.dart';
 
 import '../cubit/theme_cubit/theme_cubit.dart';
@@ -12,6 +11,7 @@ class Result extends StatelessWidget {
     var cubit = UserCubit().get(context);
     var cubit1=ThemeCubit().get(context);
         return Scaffold(
+          backgroundColor: cubit1.isDark ? Colors.black : Colors.white,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,9 +49,15 @@ class Result extends StatelessWidget {
                     cubit.calcPerfectWeight();
                     Navigator.pop(context);
                   },
-                  child: Text(
-                    "Anthor Calculate",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.arrow_back_ios,size: 40,),
+                      Text(
+                        "Calculate",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                      ),
+                    ],
                   ),
                 ),
               )
